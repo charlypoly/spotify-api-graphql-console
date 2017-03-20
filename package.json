@@ -1,0 +1,55 @@
+{
+  "name": "spotify-api-graphql-console",
+  "version": "1.0.0",
+  "description": "Spotify Web API GraphQL console",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thefrenchhouse/spotify-api-graphql-console.git"
+  },
+  "keywords": [
+    "spotify",
+    "graphql",
+    "web-console"
+  ],
+  "author": "Charly POLY <hello@charlypoly.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thefrenchhouse/spotify-api-graphql-console/issues"
+  },
+  "scripts": {
+    "clean:server": "rm -r dist-server",
+    "clean:client": "rm -r dist-client",
+    "clean": "npm run clean:server; npm run clean:client",
+    "build:server": "npm run clean:server; tsc",
+    "build:client": "npm run clean:client; webpack",
+    "build": "npm run build:client; npm run build:server",
+    "release": "standard-version",
+    "test": "mocha --compilers ts:ts-node/register spec/**",
+    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec spec/**"
+  },
+  "homepage": "https://github.com/thefrenchhouse/spotify-api-graphql-console#readme",
+  "dependencies": {
+    "cors": "^2.8.1",
+    "express": "^4.15.2",
+    "express-graphql": "^0.6.3",
+    "graphiql": "^0.9.3",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "spotify-graphql": "^1.1.0",
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.1",
+    "@types/express": "^4.0.35",
+    "@types/express-graphql": "0.0.33",
+    "@types/graphql": "^0.8.6",
+    "@types/react": "^15.0.16",
+    "@types/react-dom": "^0.14.23",
+    "awesome-typescript-loader": "^3.1.2",
+    "source-map-loader": "^0.2.0",
+    "standard-version": "^4.0.0",
+    "ts-loader": "^2.0.2",
+    "typescript": "^2.2.1"
+  }
+}
