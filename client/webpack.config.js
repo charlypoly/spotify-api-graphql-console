@@ -5,10 +5,10 @@ const ROOT_PATH = path.resolve(__dirname);
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    './src/client/client.tsx'
+    path.join(__dirname, './src/client.tsx')
   ],
   output: {
-    path: path.resolve(__dirname, 'dist-client'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/',
   },
@@ -17,7 +17,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loaders: ['ts-loader'], include: [path.join(__dirname, 'src/client')] },
+      { test: /\.tsx?$/, loaders: ['ts-loader'], include: [path.join(__dirname, 'src/')] },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
 
     ],

@@ -18,11 +18,11 @@
     "url": "https://github.com/thefrenchhouse/spotify-api-graphql-console/issues"
   },
   "scripts": {
-    "clean:server": "rm -r dist-server",
-    "clean:client": "rm -r dist-client",
+    "clean:server": "rm -r server/dist",
+    "clean:client": "rm -r client/dist",
     "clean": "npm run clean:server; npm run clean:client",
-    "build:server": "npm run clean:server; tsc",
-    "build:client": "npm run clean:client; webpack",
+    "build:server": "npm run clean:server; tsc --p server/",
+    "build:client": "npm run clean:client; webpack --config client/webpack.config.js",
     "build": "npm run build:client; npm run build:server",
     "release": "standard-version",
     "test": "mocha --compilers ts:ts-node/register spec/**",

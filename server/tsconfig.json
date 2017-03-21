@@ -10,15 +10,14 @@
     "sourceMap": true,
     "declaration": true,
     "rootDir": ".",
-    "outDir": "dist-server",
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
     "experimentalDecorators": true,
-    "types" : ["node"],
-    "jsx": "react"
+    "types" : ["node"]
   },
   "include": [
-    "src/server/**/*"
+    "src/**/*"
   ],
   "exclude": [
       "node_modules/**/*"

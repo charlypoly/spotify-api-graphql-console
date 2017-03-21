@@ -3,7 +3,7 @@ import * as graphqlHTTP from 'express-graphql';
 import * as cors from 'cors';
 import * as SpotifyGraphQL from 'spotify-graphql';
 import { GraphQLSchema } from 'graphql';
-import {config} from '../../config';
+import {config} from '../config';
 
 const PORT = 4000;
 
