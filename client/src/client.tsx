@@ -8,7 +8,19 @@ function graphQLFetcher(graphQLParams) {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(graphQLParams),
-    }).then(response => response.json());
+        credentials: 'include'
+    }).then(response => {
+        return response.json();
+    }).then(function(json) {
+        if (json && json.errors && json.errors.length) {
+            if (json.errors[0].message === 'Unauthorized') {
+                if (confirm('You need to login to Spotify, press okay to authenticate.')) {
+                    window.location.href = '/auth/connect';
+                }
+            }
+        }
+        return json;
+    });
 }
 
 ReactDOM.render(<GraphiQL fetcher={graphQLFetcher} editorTheme="solarized" />, document.getElementsByTagName('body')[0]);

@@ -18,6 +18,7 @@
     "url": "https://github.com/thefrenchhouse/spotify-api-graphql-console/issues"
   },
   "scripts": {
+    "server": "npm run build; node server/dist/src/server.js",
     "clean:server": "rm -r server/dist",
     "clean:client": "rm -r client/dist",
     "clean": "npm run clean:server; npm run clean:client",
@@ -30,13 +31,19 @@
   },
   "homepage": "https://github.com/thefrenchhouse/spotify-api-graphql-console#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.1",
     "express": "^4.15.2",
     "express-graphql": "^0.6.3",
+    "express-session": "^1.14.2",
     "graphiql": "^0.9.3",
+    "method-override": "^2.3.7",
+    "passport": "^0.3.2",
+    "passport-spotify": "^0.3.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "spotify-graphql": "^1.1.0",
+    "spotify-graphql": "^1.1.2",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
