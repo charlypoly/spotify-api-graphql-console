@@ -39,8 +39,15 @@ function graphQLFetcher(graphQLParams) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(graphQLParams),
         credentials: 'include'
-    }).then(response => {
+    }).
+    then(response => {
+      if (response.status === 503) {
+        return {
+          error: 'Too many data to fetch, request aborted.'
+        };
+      } else {
         return response.json();
+      }
     }).then(function(json) {
         if (json && json.errors && json.errors.length) {
             if (json.errors[0].message === 'Unauthorized') {

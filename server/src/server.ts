@@ -10,6 +10,7 @@ import * as cookieParser from 'cookie-parser';
 import * as methodOverride from 'method-override';
 import * as session from 'express-session';
 import * as passport from 'passport';
+import * as timeout from 'connect-timeout';
 const SpotifyStrategy: any = require('passport-spotify').Strategy;
 
 const PORT = config.server.port;
@@ -46,6 +47,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.resolve(__dirname, '../../../node_modules/')));
 app.use(express.static(path.resolve(__dirname, '../../../client/')));
+app.use(timeout('5s'));
 
 // AUTH
 app.get('/auth/connect',
@@ -67,7 +69,6 @@ app.get('/auth/logout', (req: any, res) => {
   req.logout();
   res.redirect(config.server.mountPath);
 });
-
 
 app.post('/graphql', (req: any, res: any) => {
   let accessToken = (req.user && req.user.accessToken) || '';
