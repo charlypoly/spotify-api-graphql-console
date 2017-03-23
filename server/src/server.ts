@@ -1,5 +1,4 @@
 import * as express from 'express';
-import * as cors from 'cors';
 import * as SpotifyGraphQL from 'spotify-graphql';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -36,6 +35,7 @@ function userSerializer(user, done) {
 passport.serializeUser(userSerializer);
 passport.deserializeUser(userSerializer);
 
+const appOnMountPath = express();
 const app = express();
 
 app.use(cookieParser());
@@ -58,14 +58,14 @@ app.get('/auth/connect',
 app.get('/auth/callback',
   passport.authenticate('spotify'),
   (req: any, res) => {
-    res.redirect('/');
+    res.redirect(config.server.mountPath);
   }
 );
 
 
 app.get('/auth/logout', (req: any, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect(config.server.mountPath);
 });
 
 
@@ -85,5 +85,11 @@ app.get('/', (req: any, res) => {
   res.send(new Buffer(fs.readFileSync(path.resolve(__dirname, '../../../client/index.html'))));
 });
 
-console.log(`graphql server listening on port ${PORT}`)
-app.listen(PORT);
+if (config.server.mountPath) {
+  appOnMountPath.use(
+    config.server.mountPath,
+    app
+  )
+}
+console.log(`graphql server listening on port ${PORT}`);
+(config.server.mountPath ? appOnMountPath : app).listen(PORT);

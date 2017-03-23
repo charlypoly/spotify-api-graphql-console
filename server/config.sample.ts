@@ -1,7 +1,8 @@
 const config = {
     server: {
-        sessionSecret: '',
-        port: 4000
+        sessionSecret: 'charly',
+        port: 4000,
+        mountPath: ''
     },
     spotify: {
         clientId: '',

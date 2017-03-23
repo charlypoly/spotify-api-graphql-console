@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as GraphiQL from 'graphiql';
 import * as fetch from 'isomorphic-fetch';
+import { config } from '../config';
 
 let defaultQuery = `# Welcome to Spotify GraphQL Console
 #
@@ -11,7 +12,7 @@ let defaultQuery = `# Welcome to Spotify GraphQL Console
 #
 # Keyboard shortcuts:
 #
-#       Run Query:  Ctrl-Enter (or press the play button above)
+#       Run Query:  Ctrl-Enter
 #
 #   Auto Complete:  Ctrl-Space (or just start typing)
 #
@@ -29,25 +30,11 @@ let defaultQuery = `# Welcome to Spotify GraphQL Console
 `
 
 let defaultResponse = `
-{
-  "data": {
-    "track": {
-      "name": "XO",
-      "artists": [
-        {
-          "name": "John Mayer"
-        }
-      ],
-      "album": {
-        "name": "XO"
-      }
-    }
-  }
-}
+// Press Ctrl-Enter to see the result!
 `;
 
 function graphQLFetcher(graphQLParams) {
-    return fetch('/graphql', {
+    return fetch(`${config.mountPath}/graphql`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(graphQLParams),
@@ -58,7 +45,7 @@ function graphQLFetcher(graphQLParams) {
         if (json && json.errors && json.errors.length) {
             if (json.errors[0].message === 'Unauthorized') {
                 if (confirm('This request need to be authenticated, press "OK" to log with Spotify.')) {
-                    window.location.href = '/auth/connect';
+                    window.location.href = `${config.mountPath}/auth/connect`;
                 }
             }
         }
@@ -75,7 +62,7 @@ ReactDOM.render(<GraphiQL
         <table>
           <tr>
             <td>
-              <img src="/Spotify_Icon_RGB_Green.png" className='spotify-logo' alt=""/>
+              <img src="Spotify_Icon_RGB_Green.png" className='spotify-logo' alt=""/>
             </td>
             <td className='app-name'>
               Spotify GraphQL Console
