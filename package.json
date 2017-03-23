@@ -42,7 +42,7 @@
     "passport-spotify": "^0.3.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "spotify-graphql": "^1.1.2",
+    "spotify-graphql": "^1.2.0",
     "webpack": "^2.2.1"
   },
   "devDependencies": {

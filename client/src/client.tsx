@@ -16,7 +16,7 @@ let defaultQuery = `# Welcome to Spotify GraphQL Console
 #   Auto Complete:  Ctrl-Space (or just start typing)
 #
 {
-  track(id: "3W2ZcrRsInZbjWylOi6KhZ") {
+  track(name: "XO") {
     name
     artists {
       name
@@ -27,6 +27,24 @@ let defaultQuery = `# Welcome to Spotify GraphQL Console
   }
 }
 `
+
+let defaultResponse = `
+{
+  "data": {
+    "track": {
+      "name": "XO",
+      "artists": [
+        {
+          "name": "John Mayer"
+        }
+      ],
+      "album": {
+        "name": "XO"
+      }
+    }
+  }
+}
+`;
 
 function graphQLFetcher(graphQLParams) {
     return fetch('/graphql', {
@@ -51,6 +69,7 @@ function graphQLFetcher(graphQLParams) {
 ReactDOM.render(<GraphiQL 
     fetcher={graphQLFetcher}
     defaultQuery={defaultQuery}
+    response={defaultResponse}
     editorTheme="ambiance">
       <GraphiQL.Logo>
         <table>
