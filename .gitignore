@@ -35,3 +35,9 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+server/config.ts
+client/config.ts
+
+server/dist/
+client/dist/
