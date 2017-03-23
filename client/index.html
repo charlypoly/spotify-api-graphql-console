@@ -6,10 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Spotify GraphQL Console</title>
     <link rel="stylesheet" href="./node_modules/graphiql/graphiql.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.23.0/theme/solarized.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.23.0/theme/ambiance.css" />
     <style>
         html, body {
             height: 100%;
+            font-family: "Helvetica Neue" !important;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        body,
+        .graphiql-container .variable-editor-title,
+        .graphiql-container .topBar,
+        .graphiql-container .result-window .CodeMirror-gutters,
+        .graphiql-container .docExplorerShow {
+            background: none;
+            background-color: #191414;
+            color: #FFF;
+        }
+
+        .graphiql-container .result-window .CodeMirror-gutters {
+            border: none;
+        }
+
+        .graphiql-container .resultWrap {
+            border-left: 1px solid #222326;
+        }
+
+        .graphiql-container .variable-editor-title {
+            border-top: 1px solid #222326;
+            border-bottom: 1px solid #222326;
+        }
+
+        .app-name {
+            padding-left: 11px;
+            padding-top: 8px;
+        }
+
+        .spotify-logo {
+            width: 40px;
+            margin-top: 9px;
+        }
+
+        .graphiql-container .topBar {
+            height: 50px;
+            border-bottom: 1px solid #222326;
+        }
+
+        .execute-button-wrap {
+            display: none;
         }
     </style>
 </head>
