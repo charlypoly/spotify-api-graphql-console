@@ -4,23 +4,21 @@ import * as SpotifyGraphQL from 'spotify-graphql';
 import * as fs from 'fs';
 import * as path from 'path';
 import { GraphQLSchema } from 'graphql';
-import {config} from '../config';
+import { config } from '../config';
 import * as ExpressGraphQL from 'express-graphql';
+import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
+import * as methodOverride from 'method-override';
+import * as session from 'express-session';
+import * as passport from 'passport';
+const SpotifyStrategy: any = require('passport-spotify').Strategy;
 
-
-const bodyParser:any = require('body-parser');
-const cookieParser:any = require('cookie-parser');
-const methodOverride:any = require('method-override');
-const session:any = require('express-session');
-const PORT = 4000;
-
-const passport: any = require('passport');
-let SpotifyStrategy: any = require('passport-spotify').Strategy;
+const PORT = config.server.port;
 
 let spotifyStrategy = new SpotifyStrategy({
-    clientID: config.clientId,
-    clientSecret: config.clientSecret,
-    callbackURL: config.redirectUri,
+    clientID: config.spotify.clientId,
+    clientSecret: config.spotify.clientSecret,
+    callbackURL: config.spotify.redirectUri,
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -43,14 +41,15 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser());
 app.use(methodOverride());
-app.use(session({ secret: config.sessionSecret }));
+app.use(session({ secret: config.server.sessionSecret }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.resolve(__dirname, '../../../')))
+app.use(express.static(path.resolve(__dirname, '../../../node_modules/')));
+app.use(express.static(path.resolve(__dirname, '../../../client/')));
 
 // AUTH
 app.get('/auth/connect',
-  passport.authenticate('spotify', {scope: config.scopes}),
+  passport.authenticate('spotify', {scope: config.spotify.scopes}),
   (req: any, res) => {
   // The request will be redirected to spotify for authentication, so this
   // function will not be called.
@@ -72,7 +71,7 @@ app.get('/auth/logout', (req: any, res) => {
 
 app.post('/graphql', (req: any, res: any) => {
   let accessToken = (req.user && req.user.accessToken) || '';
-  let schema = SpotifyGraphQL.getSchema(Object.assign({}, config, {
+  let schema = SpotifyGraphQL.getSchema(Object.assign({}, config.spotify, {
     accessToken: accessToken
   }));
   return ExpressGraphQL({

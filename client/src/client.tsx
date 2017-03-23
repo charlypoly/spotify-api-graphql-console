@@ -29,7 +29,7 @@ let defaultQuery = `# Welcome to Spotify GraphQL Console
 `
 
 function graphQLFetcher(graphQLParams) {
-    return fetch('http://localhost:4000/graphql', {
+    return fetch('/graphql', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(graphQLParams),
@@ -39,7 +39,7 @@ function graphQLFetcher(graphQLParams) {
     }).then(function(json) {
         if (json && json.errors && json.errors.length) {
             if (json.errors[0].message === 'Unauthorized') {
-                if (confirm('You need to login to Spotify, press okay to authenticate.')) {
+                if (confirm('This request need to be authenticated, press "OK" to log with Spotify.')) {
                     window.location.href = '/auth/connect';
                 }
             }
@@ -56,7 +56,7 @@ ReactDOM.render(<GraphiQL
         <table>
           <tr>
             <td>
-              <img src="/client/Spotify_Icon_RGB_Green.png" className='spotify-logo' alt=""/>
+              <img src="/Spotify_Icon_RGB_Green.png" className='spotify-logo' alt=""/>
             </td>
             <td className='app-name'>
               Spotify GraphQL Console
