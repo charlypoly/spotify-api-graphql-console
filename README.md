@@ -1,4 +1,5 @@
-# spotify-api-graphql-console
+# Spotify GraphQL Console
 
 
-![https://s3.eu-west-2.amazonaws.com/github-oss/spotify-api-graphql-console/demo.png](https://s3.eu-west-2.amazonaws.com/github-oss/spotify-api-graphql-console/demo.png)
+<img width="1433" alt="screen shot 2017-03-23 at 11 00 29" src="https://cloud.githubusercontent.com/assets/1252066/24242425/feacfd6a-0fb7-11e7-9ecf-9b928cb2895f.png">
+
