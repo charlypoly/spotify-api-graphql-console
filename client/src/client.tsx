@@ -68,9 +68,6 @@ ReactDOM.render(<GraphiQL
       <GraphiQL.Logo>
         <table>
           <tr>
-            <td>
-              <img src="Spotify_Icon_RGB_Green.png" className='spotify-logo' alt=""/>
-            </td>
             <td className='app-name'>
               Spotify GraphQL Console
             </td>
@@ -78,6 +75,34 @@ ReactDOM.render(<GraphiQL
         </table>
       </GraphiQL.Logo>
       <GraphiQL.Toolbar />
+      <GraphiQL.Footer>
+        <table>
+          <tr>
+            <td>
+              <img src="Spotify_Icon_RGB_Green.png" className='spotify-logo' alt=""/>
+            </td>
+            <td className='powered-by'>
+              Powered with Spotify
+            </td>
+            <td>
+              |
+            </td>
+            <td>
+              <a href="https://github.com/thefrenchhouse/spotify-api-graphql-console" target="_blank">
+                Open source code
+              </a>
+            </td>
+            <td>
+              |
+            </td>
+            <td>
+              <a href="http://charlypoly.com" target="_blank">
+                About us
+              </a>
+            </td>
+          </tr>
+        </table>
+      </GraphiQL.Footer>
     </GraphiQL>,
     document.getElementsByTagName('body')[0]
 );
