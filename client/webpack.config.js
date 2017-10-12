@@ -6,7 +6,7 @@ console.log(__dirname);
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    './src/client.tsx'
+    './client/src/client.tsx'
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
