@@ -52,9 +52,7 @@
     "source-map-loader": "^0.2.0",
     "standard-version": "^4.0.0",
     "ts-loader": "^2.0.2",
-    "typescript": "^2.2.1"
-  },
-  "devDependencies": {
+    "typescript": "^2.2.1",
     "@types/body-parser": "^1.16.1",
     "@types/connect-timeout": "0.0.31",
     "@types/cookie-parser": "^1.3.30",
@@ -63,6 +61,7 @@
     "@types/express-session": "0.0.32",
     "@types/graphql": "^0.8.6",
     "@types/method-override": "0.0.29",
+    "@types/node": "^8.0.34",
     "@types/passport": "^0.3.3",
     "@types/react": "^15.0.16",
     "@types/react-dom": "^0.14.23"
