@@ -18,6 +18,7 @@
     "url": "https://github.com/thefrenchhouse/spotify-api-graphql-console/issues"
   },
   "scripts": {
+    "postinstall": "npm i -g typescript",
     "start": "npm run server",
     "server": "npm run build; node server/dist/src/server.js",
     "clean:server": "rm -r server/dist",
