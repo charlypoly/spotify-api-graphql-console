@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 
+console.log(__dirname);
+
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
