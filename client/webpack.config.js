@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    path.join(__dirname, './src/client.tsx')
+    path.resolve(__dirname, './src/client.tsx')
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
