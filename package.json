@@ -29,7 +29,9 @@
     "build": "npm run build:client; npm run build:server",
     "release": "standard-version",
     "test": "mocha --compilers ts:ts-node/register spec/**",
-    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec spec/**"
+    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" _mocha -- --compilers ts:ts-node/register -R spec spec/**",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "homepage": "https://github.com/thefrenchhouse/spotify-api-graphql-console#readme",
   "dependencies": {
@@ -64,6 +66,8 @@
     "@types/node": "^8.0.34",
     "@types/passport": "^0.3.3",
     "@types/react": "^15.0.16",
-    "@types/react-dom": "^0.14.23"
-  }
+    "@types/react-dom": "^0.14.23",
+    "snyk": "^1.319.1"
+  },
+  "snyk": true
 }
