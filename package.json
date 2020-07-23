@@ -47,7 +47,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "spotify-graphql": "^1.4.0",
-    "webpack": "^2.2.1",
+    "webpack": "^3.11.0",
     "awesome-typescript-loader": "^3.1.2",
     "source-map-loader": "^0.2.0",
     "standard-version": "^4.0.0",
