@@ -39,7 +39,7 @@
     "express": "^4.15.2",
     "express-graphql": "^0.6.3",
     "express-session": "^1.14.2",
-    "graphiql": "^0.9.3",
+    "graphiql": "^0.10.2",
     "method-override": "^2.3.7",
     "p-timeout": "^1.0.0",
     "passport": "^0.3.2",
